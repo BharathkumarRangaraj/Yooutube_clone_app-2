@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Chatmessages from './ChatMessages';
 import { useDispatch, useSelector } from 'react-redux';
 import { addmessages } from '../utils/chatslice';
@@ -7,9 +7,10 @@ import randomnamegenerate, { generateName } from '../utils/Helper';
 const Livechat=()=>{
     const dispatch=useDispatch();
     const chatmessages=useSelector(store=>store.chat.messages)
+    const[livemessage,setlivemessage]=useState('')
 useEffect(()=>{
     const i=setInterval(() => {
-        console.log('hey');
+        
         dispatch(
             addmessages({
                 name:generateName(),
@@ -21,6 +22,7 @@ useEffect(()=>{
     return ()=>clearInterval(i);
 
 },[])
+
 
     return(
         <div>
@@ -34,7 +36,20 @@ useEffect(()=>{
          }
             
         </div>
+        <form className='border border-black w-full' onSubmit={(e)=>{
+            e.preventDefault();
+            dispatch(addmessages({
+                name:'new user',
+                message:livemessage,
+            }))
+            setlivemessage('')
+        }}>
+            <input value={livemessage} onChange={(e)=>setlivemessage(e.target.value)}  className='w-[250px]' type='text' placeholder='enter your commments'/>
+            <button  className='align-center font-bold '>Send</button>
+
+        </form>
         </div>
+        
     )
 }
 export default Livechat;
