@@ -9,7 +9,7 @@ const Videocard = ({info}) => {
 
 
   return (
-    <div className='m-2 p-2 shadow-lg border border-gray-200 w-72'>
+    <div className='m-2 p-2 shadow-lg border border-gray-200 w-72  hover:bg-slate-200'>
         <img alt='thumbnails
 ' src={thumbnails.medium.url}/>
 <h1 className='font-bold'>{snippet.localized.title}</h1>

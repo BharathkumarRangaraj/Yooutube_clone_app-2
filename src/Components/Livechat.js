@@ -27,7 +27,7 @@ useEffect(()=>{
     return(
         <div>
 <h1 className='font-bold'>Live Chat Messages</h1>
-        <div className=' w-full h-[500] ml-2 w-full h-[500px] rounded-lg overflow-y-scroll flex flex-col-reverse'>
+        <div className=' ml-2 w-full h-[500px] rounded-lg overflow-y-scroll flex flex-col-reverse'>
             
          {
             chatmessages.map((c,i)=>{
